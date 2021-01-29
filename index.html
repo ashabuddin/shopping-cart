@@ -25,11 +25,15 @@
 
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id="phone-decrease" class="btn btn-default">
+                              <i class="fas fa-minus"></i></button>
+
+                           <input id="phone-count" type="text" class="form-control text-center" value="1">
+      
+                           <button id="phone-increase" class="btn btn-default">
+                              <i class="fas fa-plus"></i></button>
                         </div>
-                        <h5>$1219</h5>
+                        <h5>$ <span id="phone-total">1219</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -43,12 +47,12 @@
                      </div>
                      <div class="col-md-5 center-item">
                         <div class="input-group number-spinner">
-                           <button class="btn btn-default"><i class="fas fa-minus"></i></button>
-                           <input type="text" class="form-control text-center" value="1">
-                           <button class="btn btn-default"><i class="fas fa-plus"></i></button>
+                           <button id="Case-decrease" class="btn btn-default"><i class="fas fa-minus"></i></button>
+                           <input id="Case-count" type="text" class="form-control text-center" value="1">
+                           <button id="Case-increase" class="btn btn-default"><i class="fas fa-plus"></i></button>
 
                         </div>
-                        <h5>$59</h5>
+                        <h5>$ <span id="Case-total">59</span></h5>
                         <img src="images/remove.png" alt="" class="remove-item">
                      </div>
                   </div>
@@ -64,7 +68,7 @@
                      </div>
 
                      <div class="col-md-4 status">
-                        <h5>$1,278</h5>
+                        <h5>$ <span id="total-price">1,278</span></h5>
                         <h5>$0</h5>
                         <h5>$1,278</h5>
                      </div>
@@ -77,6 +81,55 @@
          </div>
       </div>
    </section>
+   <script>
+      document.getElementById('Case-increase').addEventListener('click',function () {
+         var caseInput = document.getElementById('Case-count');
+         var caseCount = parseInt(caseInput.value);
+         caseNewCount = caseCount + 1;
+         caseInput.value = caseNewCount;
+         var caseTotal =  caseNewCount * 59;
+         document.getElementById('Case-total').innerText = caseTotal;
+      })
+      document.getElementById('Case-decrease').addEventListener('click',function () {
+         var caseInput = document.getElementById('Case-count');
+         var caseCount = parseInt(caseInput.value);
+         caseNewCount = caseCount - 1;
+         caseInput.value = caseNewCount;
+         var caseTotal =  caseNewCount * 59;
+         document.getElementById('Case-total').innerText = caseTotal;
+      })
+      document.getElementById('phone-increase').addEventListener('click',function () {
+        var phoneInput = document.getElementById('phone-count');
+        var phoneCount = parseInt(phoneInput.value);
+        phoneNewCount = phoneCount + 1;
+        phoneInput.value = phoneNewCount;
+        var phoneTotal =  phoneNewCount * 1219;
+        document.getElementById('phone-total').innerText = phoneTotal;
+
+      })
+      document.getElementById('phone-decrease').addEventListener('click',function () {
+        var phoneInput = document.getElementById('phone-count');
+        var phoneCount = parseInt(phoneInput.value);
+        phoneNewCount = phoneCount - 1;
+        phoneInput.value = phoneNewCount;
+        var phoneTotal =  phoneNewCount * 1219;
+        document.getElementById('phone-total').innerText = phoneTotal;
+
+      })
+      function calculateTotal() {
+       var phoneInput = document.getElementById('phone-count');
+       var phoneCount = parseInt (phoneInput.value);
+
+       var caseInput = document.getElementById('case-count');
+       var caseCount = parseInt (caseInput.value);
+       
+       var totalPrice = phoneCount * 1219 + caseCount * 59;
+       document.getElementById('total-price').innerText =totalPrice;
+      } 
+      
+     
+      
+   </script>
 </body>
 
 </html>
